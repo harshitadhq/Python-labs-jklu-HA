@@ -1,0 +1,187 @@
+
+#1
+# Read space-separated integers
+numbers = list(map(int, input().split()))
+
+even = []
+odd = []
+
+for num in numbers:
+    if num % 2 == 0:
+        even.append(num)
+    else:
+        odd.append(num)
+
+print("Even:", even)
+print("Odd:", odd)
+
+
+#2
+sentence = input()
+words = sentence.split()
+
+result = []
+for word in words:
+    if len(word) > 3:
+        result.append(word)
+
+print(result)
+
+
+#3
+balls = input().split()
+
+total_runs = 0
+wickets = 0
+boundaries = 0
+runs_per_over = []
+current_over_runs = 0
+ball_count = 0
+
+for ball in balls:
+    if ball == 'W':
+        # Wicket means 0 runs
+        wickets += 1
+    else:
+        runs = int(ball)
+        total_runs += runs
+        current_over_runs += runs
+        if runs == 4 or runs == 6:
+            boundaries += 1
+
+    ball_count += 1
+
+    # After every 6 balls, save the over and start a new one
+    if ball_count % 6 == 0:
+        runs_per_over.append(current_over_runs)
+        current_over_runs = 0
+
+if ball_count % 6 != 0:
+    runs_per_over.append(current_over_runs)
+
+print("Total Runs:", total_runs)
+print("Wickets:", wickets)
+print("Boundaries:", boundaries)
+print("Runs per over:", runs_per_over)
+
+
+#4
+numbers = list(map(int, input().split()))
+
+largest = numbers[0]
+smallest = numbers[0]
+
+for num in numbers:
+    if num > largest:
+        largest = num
+    if num < smallest:
+        smallest = num
+
+print("Largest:", largest)
+print("Smallest:", smallest)
+
+
+#5
+sentence = input()
+words = sentence.split()
+
+longest_word = words[0]
+
+for word in words:
+    if len(word) > len(longest_word):
+        longest_word = word
+
+print(longest_word)
+
+
+#6
+menu_items = input().split()
+
+prices = list(map(int, input().split()))
+
+ordered = input().split()
+
+quantity = {}
+for item in ordered:
+    if item in quantity:
+        quantity[item] += 1
+    else:
+        quantity[item] = 1
+
+total = 0
+for i in range(len(menu_items)):
+    item = menu_items[i]
+    if item in quantity:
+        qty = quantity[item]
+        cost = qty * prices[i]
+        print(item, "x", qty, "=", cost)
+        total += cost
+
+print("Total:", total)
+
+
+#7
+sentence = input()
+words = sentence.split()
+
+reversed_words = []
+for word in words:
+    reversed_words.append(word[::-1])
+
+print(" ".join(reversed_words))
+
+
+#8
+text = input()
+
+digits = []
+for char in text:
+    if char.isdigit():
+        digits.append(int(char))
+
+print(digits)
+print("Sum:", sum(digits))
+
+
+#9
+n = int(input())
+
+name_count = {}
+
+for i in range(n):
+    name = input()
+    name_lower = name.lower()
+
+    if name_lower in name_count:
+        name_count[name_lower] += 1
+    else:
+        name_count[name_lower] = 1
+
+    parts = name_lower.split()
+    first = parts[0]
+    last = parts[1]
+
+    count = name_count[name_lower]
+
+    if count == 1:
+        email = first + "." + last + "@jklu.edu.in"
+    else:
+        email = first + "." + last + str(count) + "@jklu.edu.in"
+
+    print(email)
+
+
+#10
+numbers = list(map(int, input().split()))
+
+non_zero = []
+zeros = []
+
+for num in numbers:
+    if num == 0:
+        zeros.append(num)
+    else:
+        non_zero.append(num)
+
+result = non_zero + zeros
+print(result)
